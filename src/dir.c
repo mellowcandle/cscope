@@ -653,10 +653,8 @@ accessible_file(char *file)
     if (access(compath(file), READ) == 0) {
 	struct stat stats;
 
-	if (lstat(file, &stats) == 0
-	    && S_ISREG(stats.st_mode)) {
+	if (stat(file, &stats) == 0)
 	    return YES;
-	}
     }
     return NO;
 }
